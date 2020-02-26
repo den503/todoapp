@@ -9,13 +9,13 @@
 
 {% block main_content %}
     <h1>Текущие задачи</h1>
-    <ul id="todo-list">
+    <ul id="list-group">
         {% for task in tasks %}
             {% if task.is_completed %}
-                <li class="completed">
+                <li class="list-group-item completed">
                     <input class="checkbox" data-uid="{{ task.id }}" type="checkbox" disabled="disabled" checked="checked" />
             {% else %}
-                <li>
+                <li class="list-group-item">
                     <input class="checkbox" data-uid="{{ task.id }}" type="checkbox" />
             {% endif %}
             {% if task.priority == task.PRIORITY_HIGH %}

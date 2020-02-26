@@ -26,17 +26,17 @@
             <div class="side_bar col">
                 {% block side_bar %}
                     {% if user.is_authenticated %}
-                        <p>{{ user.first_name }}</p>
+                        <p class="h4">Имя: {{ user.first_name }}</p>
                         {% if user.profile.avatar.url != None %}
                             <img src="{{ user.profile.avatar.url }}" class="img-fluid">
                         {% else %}
                             <img src="/media/no_image.png" class="img-fluid">
                         {% endif %}
-                        <ul>
-                            <li><a href="{% url 'edit' %}">профиль</a></li>
-                            <li><a href="{% url 'tasks:create' %}">добавить задачу</a></li>
-                            <li><a href="{% url 'tasks:list' %}">задачи</a></li>
-                            <li><a href="{% url 'logout' %}">выйти</a></li>
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a href="{% url 'edit' %}" class="nav-link">профиль</a></li>
+                            <li class="nav-item"><a href="{% url 'tasks:create' %}" class="nav-link">добавить задачу</a></li>
+                            <li class="nav-item"><a href="{% url 'tasks:list' %}" class="nav-link">задачи</a></li>
+                            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">выйти</a></li>
                         </ul>
                     {% endif %}
                 {% endblock %}
