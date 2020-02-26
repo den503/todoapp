@@ -9,10 +9,12 @@
     {% else %}
         <p>Введите логин/пароль:</p>
     {% endif %}
-    <form action="." method="POST" class="login">
+    <form action="" method="POST" class="login">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="hidden" name="next" value="{{ next }}"/>
         <button type="submit">Войти</button>
+        <a href="{% url 'register' %}">зарегистрироваться</a>
     </form>
+    <p><a href="{% url "password_reset" %}">Забыли пароль?</a></p>
 {% endblock %}

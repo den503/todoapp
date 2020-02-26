@@ -8,6 +8,7 @@ from django.views import View
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
+from django.contrib import messages
 
 
 @login_required
@@ -25,6 +26,7 @@ def complete_task(request, uid):
 def delete_task(request, uid):
     task = TodoItem.objects.get(pk=uid)
     task.delete()
+    messages.success(request, 'Задача удалена')
     return redirect(reverse('tasks:list'))
 
 
