@@ -62,3 +62,24 @@ class TaskCreateView(View):
 class TaskDetailsView(DetailView):
     model = TodoItem
     template_name = 'tasks/details.html'
+
+
+class TaskEditView(LoginRequiredMixin, View):
+    def create_render(self, request, form, task):
+        return render(request, 'tasks/edit.html', {'form': form, 'task': task})
+
+    def post(self, request, pk, *args, **kwargs):
+        task = TodoItem.objects.get(id=pk)
+        form = TodoItemForm(request.POST, instance=task)
+        if form.is_valid():
+            updated_task = form.save(commit=False)
+            updated_task.owner = request.user
+            updated_task.save()
+            return redirect(reverse('tasks:list'))
+
+        return self.create_render(request, form, task)
+
+    def get(self, request, pk, *args, **kwargs):
+        task = TodoItem.objects.get(id=pk)
+        form = TodoItemForm(instance=task)
+        return self.create_render(request, form, task)

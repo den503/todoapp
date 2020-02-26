@@ -17,6 +17,7 @@
     <li>{{ object.is_completed|yesno:'Выполнена,Не выполнена' }}</li>
     <li><i class="far fa-calendar-alt"></i>&nbsp;Создана: {{ object.created|date:'d.m.Y H:i' }}</li>
     <li><i class="far fa-clock"></i>&nbsp;Последнее изменение: {{ object.updated|date:'d.m.Y H:i' }}</li>
+    <li><i class="far fa-edit"></i>&nbsp;<a href="{% url 'tasks:edit' pk=object.pk %}">Редактировать</a></li>
 </ul>
 <i class="fas fa-list-ul"></i>&nbsp;<a href="{% url 'tasks:list' %}">Назад к списку </a>
 {% endblock %}

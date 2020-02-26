@@ -1,5 +1,5 @@
 {% load static %}
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} Tasks list {% endblock %}</title>
@@ -27,7 +27,11 @@
                 {% block side_bar %}
                     {% if user.is_authenticated %}
                         <p>{{ user.first_name }}</p>
-                        <img src="{{ user.profile.avatar.url }}" class="img-fluid">
+                        {% if user.profile.avatar.url != None %}
+                            <img src="{{ user.profile.avatar.url }}" class="img-fluid">
+                        {% else %}
+                            <img src="/media/no_image.png" class="img-fluid">
+                        {% endif %}
                         <ul>
                             <li><a href="{% url 'edit' %}">профиль</a></li>
                             <li><a href="{% url 'tasks:create' %}">добавить задачу</a></li>
