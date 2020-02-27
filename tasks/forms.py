@@ -7,6 +7,10 @@ class TodoItemForm(forms.ModelForm):
         model = TodoItem
         fields = ('description', 'priority', )
         labels = {'description': 'Описание', 'priority': ''}
+        widgets = {
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+            'priority': forms.Select(attrs={'class': 'form-control'})
+        }
 
 
 class TodoItemExportForm(forms.Form):

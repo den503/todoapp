@@ -27,9 +27,20 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
+        labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'E-mail'}
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+        }
 
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('birth_date', 'avatar')
+        labels = {'birth_date': 'Дата рождения', 'avatar': 'Фотография'}
+        widgets = {
+            'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
+            'avatar': forms.FileInput(attrs={'class': 'form-control-file'}),
+        }
