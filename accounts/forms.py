@@ -9,12 +9,18 @@ class LoginForm(forms.Form):
 
 
 class RegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password_confirmation = forms.CharField(label='Подтвердите пароль', widget=forms.PasswordInput)
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Пароль'}))
+    password_confirmation = forms.CharField(label='Подтвердите пароль', widget=forms.PasswordInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Подтверждение пароля'}))
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
+        labels = {'username': 'username', 'first_name': 'Имя', 'email': 'E-mail'}
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Имя'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control mb-2', 'placeholder': 'E-mail'}),
+        }
 
     def clean_password_confirmation(self):
         cd = self.cleaned_data

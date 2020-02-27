@@ -6,7 +6,37 @@
     <p>Воспользуйтесь следующей формой:</p>
     <form action="." method="post">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        <p><input type="submit" value="Создать"></p>
+        <div class="form-row align-items-center">
+            <div class="col-12">
+                <label class="sr-only" for="{{ user_form.username.id_for_label}}">{{ user_form.username.label }}</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">@</div>
+                    </div>
+                    {{ user_form.username }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label class="sr-only" for="{{ user_form.first_name.id_for_label}}">{{ user_form.first_name.label }}</label>
+                {{ user_form.first_name }}
+            </div>
+
+            <div class="col-12">
+                <label class="sr-only" for="{{ user_form.email.id_for_label}}">{{ user_form.email.label }}</label>
+                {{ user_form.email }}
+            </div>
+
+            <div class="col-12">
+                <label class="sr-only" for="{{ user_form.password.id_for_label}}">{{ user_form.password.label }}</label>
+                {{ user_form.password }}
+            </div>
+
+            <div class="col-12">
+                <label class="sr-only" for="{{ user_form.password_confirmation.id_for_label}}">{{ user_form.password_confirmation.label }}</label>
+                {{ user_form.password_confirmation }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Создать</button>
     </form>
 {% endblock %}
