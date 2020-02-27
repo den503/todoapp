@@ -38,9 +38,8 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('birth_date', 'avatar')
-        labels = {'birth_date': 'Дата рождения', 'avatar': 'Фотография'}
+        fields = ('birth_date', )
+        labels = {'birth_date': 'Дата рождения'}
         widgets = {
             'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
-            'avatar': forms.FileInput(attrs={'class': 'form-control-file'}),
         }

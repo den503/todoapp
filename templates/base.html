@@ -27,11 +27,11 @@
                 {% block side_bar %}
                     {% if user.is_authenticated %}
                         <p class="h4">Имя: {{ user.first_name }}</p>
-                        {% if user.profile.avatar.url != None %}
+                        {% comment %}{% if user.profile.avatar.url != None %}
                             <img src="{{ user.profile.avatar.url }}" class="img-fluid">
                         {% else %}
                             <img src="/media/no_image.png" class="img-fluid">
-                        {% endif %}
+                        {% endif %}{% endcomment %}
                         <ul class="nav flex-column">
                             <li class="nav-item"><a href="{% url 'edit' %}" class="nav-link">профиль</a></li>
                             <li class="nav-item"><a href="{% url 'tasks:create' %}" class="nav-link">добавить задачу</a></li>

@@ -24,10 +24,10 @@
             <label for="{{ profile_form.birth_date.id_for_label}}">{{ profile_form.birth_date.label }}</label>
             {{ profile_form.birth_date }}
         </div>
-        <div class="form-group">
+{% comment %}        <div class="form-group">
             <label for="{{ profile_form.avatar.id_for_label}}">{{ profile_form.avatar.label }}</label>
             {{ profile_form.avatar }}
-        </div>
+        </div>{% endcomment %}
 
         <button type="submit"  class="btn btn-dark">Сохранить</button>
     </form>
